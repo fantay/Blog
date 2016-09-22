@@ -6,12 +6,13 @@
 package BlogUtil;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 /**
  *
@@ -25,8 +26,9 @@ public class Page implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany(mappedBy = "page")
-    ArrayList<Page> pages = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "id_util")
+    private Util util;
 
     
     /* getter & setter */
