@@ -23,6 +23,8 @@ public class Page implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    
+    /* getter & setter */
     public Long getId() {
         return id;
     }
