@@ -6,23 +6,19 @@
 package BlogUtil;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 
 /**
  *
  * @author Laurent-LIM
  */
 @Entity
-public class Page implements Serializable {
+public class Commentaire implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -30,14 +26,12 @@ public class Page implements Serializable {
     private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "id_util")
-    private Util util;
+    @JoinColumn(name = "id_page")
+    private Page page;
     
-    @OneToMany(mappedBy = "page")
-    private List<Commentaire> commentaires = new ArrayList<>();
+    
+    
 
-    
-    /* getter & setter */
     public Long getId() {
         return id;
     }
@@ -56,10 +50,10 @@ public class Page implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Page)) {
+        if (!(object instanceof Commentaire)) {
             return false;
         }
-        Page other = (Page) object;
+        Commentaire other = (Commentaire) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -68,7 +62,7 @@ public class Page implements Serializable {
 
     @Override
     public String toString() {
-        return "BlogUtil.Page[ id=" + id + " ]";
+        return "BlogUtil.Commentaire[ id=" + id + " ]";
     }
     
 }
