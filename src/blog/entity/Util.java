@@ -44,10 +44,9 @@ public class Util implements Serializable {
     @ManyToMany
     private List<Util> utils = new ArrayList<>();
     
-    /* jointure vers Message.java par Many to one*/
-    @ManyToOne
-    private List<Util> utils2 = new ArrayList<>();
-    
+    /* jointure vers Message.java par One To many*/
+    @OneToMany(mappedBy = "util2")
+    private List<Message> messages = new ArrayList<>();
     
     /*  getter & setter */
     

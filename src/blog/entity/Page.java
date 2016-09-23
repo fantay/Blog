@@ -34,7 +34,7 @@ public class Page implements Serializable {
     @JoinColumn(name = "id_util")
     private Util util;
     
-    /* jointure vers Page.java */
+    /* jointure vers Commentaire.java */
     @OneToMany(mappedBy = "page")
     private List<Commentaire> commentaires = new ArrayList<>();
 

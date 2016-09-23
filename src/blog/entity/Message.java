@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Message;
+package blog.entity;
 
 import blog.entity.Util;
 import java.io.Serializable;
@@ -13,8 +13,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -28,11 +30,15 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    /* jointure vers Util.java */
+    /* jointure vers Util.java par table intermédiaire */
     @ManyToMany
     @JoinTable(name = "Util_Message")
     private List<Util> util = new ArrayList<>();
     
+    /* jointure vers Util.java par one to many */
+    @ManyToOne
+    @JoinColumn(name = "id_util")
+    private Util util2;  
     
     /* getter & setter */
     public Long getId() {
