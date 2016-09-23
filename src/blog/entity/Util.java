@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -37,6 +38,10 @@ public class Util implements Serializable {
     /* jointure vers Commentaire.java */
     @OneToMany(mappedBy = "util")
     private List<Commentaire> commentaires = new ArrayList<>();
+    
+    /* jointure vers Util.java */
+    @ManyToMany
+    private List<Util> utils = new ArrayList<>();
     
     
     /*  getter & setter */
