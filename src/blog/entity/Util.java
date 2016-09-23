@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -39,9 +40,13 @@ public class Util implements Serializable {
     @OneToMany(mappedBy = "util")
     private List<Commentaire> commentaires = new ArrayList<>();
     
-    /* jointure vers Util.java */
+    /* jointure vers Message.java par table intermédiaire */
     @ManyToMany
     private List<Util> utils = new ArrayList<>();
+    
+    /* jointure vers Message.java par Many to one*/
+    @ManyToOne
+    private List<Util> utils2 = new ArrayList<>();
     
     
     /*  getter & setter */
