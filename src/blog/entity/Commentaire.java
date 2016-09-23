@@ -35,9 +35,10 @@ public class Commentaire implements Serializable {
     @JoinColumn(name = "id_article")
     private Article article;
     
-    
-    
-    
+    /* jointure vers Util.java */
+    @ManyToOne
+    @JoinColumn(name = "id_util")
+    private Util util;
     
     
     
