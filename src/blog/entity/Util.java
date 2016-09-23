@@ -34,6 +34,10 @@ public class Util implements Serializable {
     @OneToMany(mappedBy = "util")
     private List<Article> articles = new ArrayList<>();
     
+    /* jointure vers Commentaire.java */
+    @OneToMany(mappedBy = "util")
+    private List<Commentaire> commentaires = new ArrayList<>();
+    
     
     /*  getter & setter */
     
