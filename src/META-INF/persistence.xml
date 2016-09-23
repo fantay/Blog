@@ -7,6 +7,7 @@
     <class>blog.entity.Article</class>
     <class>blog.entity.Commentaire</class>
     <class>blog.entity.Message</class>
+    <class>blog.entity.NumeroSecu</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.user" value="app"/>

@@ -6,15 +6,10 @@
 package blog.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -22,40 +17,20 @@ import javax.persistence.OneToOne;
  * @author Laurent-LIM
  */
 @Entity
-public class Util implements Serializable {
+public class NumeroSecu implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    /* jointure vers Page.java */
-    @OneToMany(mappedBy = "util")
-    private List<Page> pages = new ArrayList<>();
-    
-    /* jointure vers Article.java */
-    @OneToMany(mappedBy = "util")
-    private List<Article> articles = new ArrayList<>();
-    
-    /* jointure vers Commentaire.java */
-    @OneToMany(mappedBy = "util")
-    private List<Commentaire> commentaires = new ArrayList<>();
-    
-    /* jointure vers Message.java par table intermédiaire */
-    @ManyToMany
-    private List<Util> utils = new ArrayList<>();
-    
-    /* jointure vers Message.java par One To many*/
-    @OneToMany(mappedBy = "util2")
-    private List<Message> messages = new ArrayList<>();
-    
-    /* jointure one to one vers Numerosecu.java */
-    @OneToOne(mappedBy = "util")
-    private NumeroSecu numerosecu;
+    /* jointure one to one vers Util.java */
+    @OneToOne
+    private Util util;
     
     
-    /*  getter & setter */
-    
+    /* getter & setter */
+
     public Long getId() {
         return id;
     }
@@ -74,10 +49,10 @@ public class Util implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Util)) {
+        if (!(object instanceof NumeroSecu)) {
             return false;
         }
-        Util other = (Util) object;
+        NumeroSecu other = (NumeroSecu) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -86,7 +61,7 @@ public class Util implements Serializable {
 
     @Override
     public String toString() {
-        return "BlogUtil.Util[ id=" + id + " ]";
+        return "blog.entity.NumeroSecu[ id=" + id + " ]";
     }
     
 }
