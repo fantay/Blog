@@ -5,11 +5,16 @@
  */
 package Message;
 
+import blog.entity.Util;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -23,6 +28,13 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    /* jointure vers Util.java */
+    @ManyToMany
+    @JoinTable(name = "Util_Message")
+    private List<Util> util = new ArrayList<>();
+    
+    
+    /* getter & setter */
     public Long getId() {
         return id;
     }
