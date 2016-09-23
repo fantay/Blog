@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BlogUtil;
+package blog.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -25,12 +25,24 @@ public class Commentaire implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    /* jointure vers Page.java*/
     @ManyToOne
     @JoinColumn(name = "id_page")
     private Page page;
     
+    /* jointure vers Article.java */
+    @ManyToOne
+    @JoinColumn(name = "id_article")
+    private Article article;
     
     
+    
+    
+    
+    
+    
+    
+    /*  getter & setter     */
 
     public Long getId() {
         return id;

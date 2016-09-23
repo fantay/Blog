@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BlogUtil;
+package blog.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,28 +16,39 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 /**
  *
  * @author Laurent-LIM
  */
 @Entity
-public class Page implements Serializable {
+public class Article implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    /* jointure vers Util.java  */
     @ManyToOne
     @JoinColumn(name = "id_util")
     private Util util;
     
-    @OneToMany(mappedBy = "page")
+    /* jointure vers Commentaire.java */
+    @OneToMany(mappedBy = "article")
     private List<Commentaire> commentaires = new ArrayList<>();
 
+    public Util getUtil() {
+        return util;
+    }
+
+    public void setUtil(Util util) {
+        this.util = util;
+    }
+
+    /*  getter & setter  */
     
-    /* getter & setter */
+    
+    
     public Long getId() {
         return id;
     }
@@ -56,10 +67,10 @@ public class Page implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Page)) {
+        if (!(object instanceof Article)) {
             return false;
         }
-        Page other = (Page) object;
+        Article other = (Article) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -68,7 +79,7 @@ public class Page implements Serializable {
 
     @Override
     public String toString() {
-        return "BlogUtil.Page[ id=" + id + " ]";
+        return "BlogUtil.Article[ id=" + id + " ]";
     }
     
 }
